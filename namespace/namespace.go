@@ -14,7 +14,8 @@ import (
 func main() {
 	cmd := exec.Command("sh") // 指定被fork出来的新进程内的初始命令
 	cmd.SysProcAttr = &syscall.SysProcAttr{
-		Cloneflags: syscall.CLONE_NEWUTS, //使用CLONE_NEWUTS标识来创建一个UTC namesapce
+		Cloneflags: syscall.CLONE_NEWUTS | syscall.CLONE_NEWPID | syscall.CLONE_NEWNS |
+			syscall.CLONE_NEWNET | syscall.CLONE_NEWIPC, //使用CLONE_NEWUTS标识来创建一个UTC namesapce
 	}
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
