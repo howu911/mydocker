@@ -1,0 +1,9 @@
+{
+  "commentTranslate.source": "Google",
+  "commentTranslate.targetLanguage": "zh-CN",
+  // "go.delveConfig": {
+  //   "debugAdapter": "legacy",
+  // },
+  // "go.gopath": "/home/howu/go",
+  // "go.goroot": "/usr/local/go",
+}

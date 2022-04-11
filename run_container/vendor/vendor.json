@@ -1,0 +1,31 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "SdEcxwaW92m0H3pao3BPj2ZpvaU=",
+			"path": "github.com/Sirupsen/logrus",
+			"revision": "446d1c146faa8ed3f4218f056fcd165f6bcfda81",
+			"revisionTime": "2015-12-04T14:14:43Z"
+		},
+		{
+			"checksumSHA1": "LMu1NsthSqcXfKu0m6YGPAmwBcY=",
+			"path": "github.com/urfave/cli",
+			"revision": "0bdeddeeb0f650497d603c4ad7b20cfe685682f6",
+			"revisionTime": "2016-11-22T04:36:10Z"
+		},
+		{
+			"checksumSHA1": "Ld0iviZSRGAKK6WSoti+3++1RmY=",
+			"path": "golang.org/x/sys/internal/unsafeheader",
+			"revision": "aa78b53d3365f44d41f3623b29dd195e82812487",
+			"revisionTime": "2021-09-07T18:41:54Z"
+		},
+		{
+			"checksumSHA1": "YfhJfvaMAGgC4Joa/uDeRtz5tzs=",
+			"path": "golang.org/x/sys/unix",
+			"revision": "aa78b53d3365f44d41f3623b29dd195e82812487",
+			"revisionTime": "2021-09-07T18:41:54Z"
+		}
+	],
+	"rootPath": "my_docker/run_container"
+}
