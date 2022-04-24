@@ -26,7 +26,8 @@ func NewParentProcess(tty bool) (*exec.Cmd, *os.File) {
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 	}
-	cmd.ExtraFiles = []*os.File{readPipe} // 携带文件句柄去创建子进程
+	cmd.ExtraFiles = []*os.File{readPipe}                   // 携带文件句柄去创建子进程
+	cmd.Dir = "/home/howu/go/src/my_docker/busybox/busybox" // 指定进程运行的当前目录
 	return cmd, writePipe
 }
 
