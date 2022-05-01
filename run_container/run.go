@@ -28,7 +28,10 @@ func Run(tty bool, comArray []string, res *subsystems.ResourceConfig) {
 
 	sendInitCommand(comArray, writePipe)
 	parent.Wait()
-	os.Exit(-1)
+	mntURL := "/home/howu/go/src/my_docker/rootfs/mnt/"
+	rootURL := "/home/howu/go/src/my_docker/rootfs/"
+	container.DeleteWorkSpace(rootURL, mntURL)
+	os.Exit(0)
 }
 
 func sendInitCommand(comArray []string, writePipe *os.File) {
