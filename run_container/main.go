@@ -19,6 +19,7 @@ func main() {
 	app.Commands = []cli.Command{ // 命令行传递的参数会在这里处理
 		initCommand,
 		runCommand,
+		commitCommand,
 	}
 
 	app.Before = func(context *cli.Context) error {
