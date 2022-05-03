@@ -212,6 +212,26 @@ http://cn.voidcc.com/question/p-zfkzapey-vb.html
 
 
 
+## Go string函数与strconv.Itoa函数的区别
+
+https://blog.csdn.net/TCatTime/article/details/100192117
+
+
+
+# 遗留问题
+
+## 独立的镜像区 code-5.2
+
+每个容器根据容器id放置自己的镜像
+
+
+
+## 后台运行的容器，停止后，不能清理容器信息，以及挂载信息 code-5.2
+
+
+
+
+
 
 
 
