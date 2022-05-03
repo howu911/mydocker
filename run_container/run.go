@@ -27,10 +27,12 @@ func Run(tty bool, comArray []string, res *subsystems.ResourceConfig, volume str
 	cgroupManager.Apply(parent.Process.Pid)
 
 	sendInitCommand(comArray, writePipe)
-	parent.Wait()
-	mntURL := "/home/howu/go/src/my_docker/rootfs/mnt/"
-	rootURL := "/home/howu/go/src/my_docker/rootfs/"
-	container.DeleteWorkSpace(rootURL, mntURL, volume)
+	if tty {
+		parent.Wait()
+		mntURL := "/home/howu/go/src/my_docker/rootfs/mnt/"
+		rootURL := "/home/howu/go/src/my_docker/rootfs/"
+		container.DeleteWorkSpace(rootURL, mntURL, volume)
+	}
 	os.Exit(0)
 }
 

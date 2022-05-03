@@ -35,6 +35,10 @@ var runCommand = cli.Command{
 			Name:  "v",
 			Usage: "volume",
 		},
+		cli.BoolFlag{
+			Name:  "d",
+			Usage: "derach container",
+		},
 	},
 	Action: func(context *cli.Context) error {
 		if len(context.Args()) < 1 {
@@ -51,6 +55,13 @@ var runCommand = cli.Command{
 			CpuShare:    context.String("cpushare"),
 		}
 		volume := context.String("v")
+		detach := context.Bool("d")
+
+		if tty && detach {
+			return fmt.Errorf("ti and d paramter can not both provided")
+		}
+
+		log.Infof("createTty %v", tty)
 		Run(tty, cmdArray, resConf, volume)
 		return nil
 	},
