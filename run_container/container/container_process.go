@@ -32,7 +32,7 @@ type ContainerInfo struct {
 }
 
 // 构建容器运行环境
-func NewParentProcess(tty bool, volume, containerName, imageName string) (*exec.Cmd, *os.File) {
+func NewParentProcess(tty bool, volume, containerName, imageName string, envSlice []string) (*exec.Cmd, *os.File) {
 	readPipe, writePipe, err := NewPipe()
 	if err != nil {
 		log.Errorf("New pipe error %v", err)
@@ -65,6 +65,7 @@ func NewParentProcess(tty bool, volume, containerName, imageName string) (*exec.
 		cmd.Stderr = stdLogFile
 	}
 	cmd.ExtraFiles = []*os.File{readPipe} // 携带文件句柄去创建子进程
+	cmd.Env = append(os.Environ(), envSlice...)
 	NewWorkSpace(volume, imageName, containerName)
 	cmd.Dir = fmt.Sprintf(MntUrl, containerName) // 指定进程运行的当前目录
 

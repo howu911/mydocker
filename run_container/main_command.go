@@ -44,6 +44,10 @@ var runCommand = cli.Command{
 			Name:  "d",
 			Usage: "derach container",
 		},
+		cli.StringSliceFlag{
+			Name:  "e",
+			Usage: "set environment",
+		},
 	},
 	Action: func(context *cli.Context) error {
 		if len(context.Args()) < 1 {
@@ -67,13 +71,14 @@ var runCommand = cli.Command{
 		volume := context.String("v")
 		detach := context.Bool("d")
 		containerName := context.String("name")
+		envSlice := context.StringSlice("e")
 
 		if tty && detach {
 			return fmt.Errorf("ti and d paramter can not both provided")
 		}
 
 		log.Infof("createTty %v", tty)
-		Run(tty, cmdArray, resConf, volume, containerName, imageName)
+		Run(tty, cmdArray, resConf, volume, containerName, imageName, envSlice)
 		return nil
 	},
 }

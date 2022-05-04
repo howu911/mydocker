@@ -15,14 +15,14 @@ import (
 	log "github.com/Sirupsen/logrus"
 )
 
-func Run(tty bool, comArray []string, res *subsystems.ResourceConfig, volume, containerName, imageName string) {
+func Run(tty bool, comArray []string, res *subsystems.ResourceConfig, volume, containerName, imageName string, envSlice []string) {
 	//生成容器名，防止用户没有传容器名
 	containerID := randStringBytes(10)
 	if containerName == "" {
 		containerName = containerID
 	}
 
-	parent, writePipe := container.NewParentProcess(tty, volume, containerName, imageName)
+	parent, writePipe := container.NewParentProcess(tty, volume, containerName, imageName, envSlice)
 	if parent == nil {
 		log.Errorf("New parent process error")
 		return
