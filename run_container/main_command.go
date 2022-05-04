@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"my_docker/run_container/cgroups/subsystems"
 	"my_docker/run_container/container"
@@ -113,6 +114,30 @@ var logCommand = cli.Command{
 		}
 		containerName := context.Args().Get(0)
 		logContainer(containerName)
+		return nil
+	},
+}
+
+var execCommand = cli.Command{
+	Name:  "exec",
+	Usage: "exec a command into container",
+	Action: func(context *cli.Context) error {
+		// 这里是为了避免重复调用
+		if os.Getenv(ENV_EXEC_PID) != "" {
+			log.Infof("pid callback pid %s", os.Getpid())
+			return nil
+		}
+
+		if len(context.Args()) < 2 {
+			return fmt.Errorf("missing container name or command")
+		}
+		containerName := context.Args().Get(0)
+		var commandArray []string
+		// for _, arg := range context.Args().Tail() {
+		// 	commandArray = append(commandArray, arg)
+		// }
+		commandArray = append(commandArray, context.Args().Tail()...)
+		ExecContainer(containerName, commandArray)
 		return nil
 	},
 }
